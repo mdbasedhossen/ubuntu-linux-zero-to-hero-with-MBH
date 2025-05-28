@@ -1,0 +1,65 @@
+# Ubuntu ইনস্টলেশন (Dual Boot ও Virtual Machine)
+
+## ১. Ubuntu ইনস্টলেশন (Dual Boot — Windows + Ubuntu)
+
+এই পদ্ধতিতে Ubuntu সরাসরি হার্ডড্রাইভে Windows-এর পাশে ইনস্টল হয়।
+Boot করার সময় তুমি চাইবে কোনটি চালু করবে (Windows না Ubuntu)।
+
+### ধাপ ১: Pendrive Bootable করো
+আগের গাইড অনুসরণ করে Rufus বা balenaEtcher দিয়ে USB বানাও।
+
+### ধাপ ২: ডিস্কে ফাঁকা জায়গা রাখো
+* Disk Management (Windows-এ) ওপেন করো
+* C drive-এর কাছাকাছি 20GB বা বেশি জায়গা shrink করে রাখো (Unallocated space)
+
+### ধাপ ৩: BIOS বা UEFI তে Secure Boot বন্ধ করো
+* PC restart করে BIOS-এ ঢুকো (F2, Del বা Esc)
+* Secure Boot অপশনটি disable করো
+
+### ধাপ ৪: USB থেকে Boot করো
+* Boot Menu থেকে Pendrive সিলেক্ট করো (সাধারণত F12)
+
+### ধাপ ৫: Ubuntu Install করো
+* Install Ubuntu সিলেক্ট করো
+* Keyboard layout এবং timezone সিলেক্ট করো
+* Installation type: Install Ubuntu alongside Windows সিলেক্ট করো (অথবা Something else দিয়ে ম্যানুয়ালি পার্টিশন করো)
+* Username, password দিয়ে ইনস্টল শেষ করো
+Reboot দিলে GRUB bootloader আসবে, যেখান থেকে Ubuntu বা Windows যেকোনোটা বেছে চালাতে পারবে
+
+
+
+## ২. Ubuntu ইনস্টলেশন (Virtual Machine)
+
+এই পদ্ধতিতে Ubuntu কম্পিউটারে সরাসরি ইনস্টল হয় না, বরং সফটওয়্যারের ভেতর ভার্চুয়ালি রান করে
+### দরকার:
+* ISO ফাইল
+* VM সফটওয়্যার: VirtualBox (ফ্রি) অথবা VMware Workstation Player (ব্যক্তিগত ব্যবহারের জন্য ফ্রি)
+
+### VirtualBox দিয়ে Ubuntu ইনস্টল:
+#### ধাপ ১: VirtualBox ডাউনলোড করো
+[https://www.virtualbox.org/](https://www.virtualbox.org/)
+
+#### ধাপ ২: নতুন VM তৈরি করো
+* Name: Ubuntu
+* Type: Linux এবং Version: Ubuntu 64-bit
+* RAM: 2048MB বা বেশি
+* Hard Disk: Create Virtual Hard Disk, 20GB বা তার বেশি
+
+#### ধাপ ৩: ISO attach করো
+* Settings এ গিয়ে Storage → Controller: IDE → Choose a disk → Ubuntu ISO সিলেক্ট করো
+#### ধাপ ৪: VM চালু করো
+* Boot হবে ISO থেকে এবং Install Ubuntu স্ক্রিন আসবে
+#### ধাপ ৫: ইনস্টলেশন প্রক্রিয়া শেষ করো
+
+## কোনটা বেছে নেবো
+
+| বিষয়                 Dual Boot                    Virtual Machine               
+| পারফরম্যান্স            ভালো                         তুলনামূলক ধীর                  
+| রিসোর্স ব্যবহারে         সরাসরি                        হোস্টের RAM ভাগ করে           
+| ঝুঁকি                 ডিস্ক সমস্যা হতে পারে             কোনো রিস্ক নেই                 
+| ভালো সিচুয়েশন         প্রডাকশন বা প্র্যাকটিকাল ইউজ       শেখা, টেস্টিং, কোর্স করার জন্য 
+
+
+## পরবর্তী ধাপ
+Ubuntu ইনস্টল শেষ হলে
+পরবর্তী পর্বে: Ubuntu এর ফাইল সিস্টেম, কমান্ড লাইন ইন্টারফেস এবং বেসিক সেটআপ
